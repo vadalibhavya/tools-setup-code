@@ -32,8 +32,6 @@ resource "aws_vpc_security_group_egress_rule" "allowall" {
 
   security_group_id = aws_security_group.tool.id
   cidr_ipv4 = "0.0.0.0/0"
-  from_port = 0
-  to_port = 0
   ip_protocol = "-1"
 }
 resource "aws_instance" "tools" {
