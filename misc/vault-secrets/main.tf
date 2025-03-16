@@ -15,7 +15,7 @@ variable "vault_token" {}
 
 #store the secrets
 resource "vault_generic_secret" "ssh" {
- path = "infra/ssh"
+ path = "Infra/ssh"
  data_json = <<EOT
 {
 	"username": "ec2-user",
