@@ -9,7 +9,6 @@ terraform {
 resource "aws_security_group" "tool" {
   name = "${var.name}-sg"
   description = "${var.name}-sg"
-  vpc_id = aws_vpc.vpc.id
   tags = {
 	Name = "${var.name}-sg"
   }
