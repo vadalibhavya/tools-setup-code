@@ -27,7 +27,7 @@ resource "vault_mount" "ssh" {
 }
 #store the secrets
 resource "vault_generic_secret" "ssh" {
- path = "infra/ssh"
+ path = "${vault_mount.ssh.path}/ssh"
  data_json = <<EOT
 {
 	"username": "ec2-user",
