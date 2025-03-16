@@ -28,6 +28,12 @@ resource "aws_vpc_security_group_ingress_rule" "allow_port" {
   ip_protocol = "tcp"
 }
 
+resource "aws_vpc_security_group_egress_rule" "allowall" {
+
+  security_group_id = aws_security_group.tool.id
+  cidr_ipv4 = "0.0.0.0/0"
+  ip_protocol = "-1"
+}
 resource "aws_instance" "tools" {
   ami                    = var.ami_id
   instance_type          = var.instance_type
