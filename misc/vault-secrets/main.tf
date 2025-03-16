@@ -4,6 +4,12 @@ terraform {
 	key    = "vaultsecrets/state"
 	region = "us-east-1"
   }
+  required_providers {
+	vault = {
+	  source  = "hashicorp/vault"
+	  version = "4.3.0"
+	}
+  }
 }
 
 provider "vault" {
@@ -13,9 +19,15 @@ provider "vault" {
 }
 variable "vault_token" {}
 
+resource "vault_mount" "ssh" {
+  path = "infra"
+  type = "kv"
+  options = { version = "2" }
+  description = "Infra secrets"
+}
 #store the secrets
 resource "vault_generic_secret" "ssh" {
- path = "Infra/ssh"
+ path = "infra/ssh"
  data_json = <<EOT
 {
 	"username": "ec2-user",
