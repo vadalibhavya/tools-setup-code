@@ -8,3 +8,10 @@
     name: vault
     state: installed
 
+
+
+- name: start vault
+  ansible.builtin.service:
+    name: vault
+    state: started
+    enabled: true
